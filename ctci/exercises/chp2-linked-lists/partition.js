@@ -1,4 +1,4 @@
-module.exports = (linkedListHead, partition) => {
+function partition(linkedListHead, partition) {
   let lessThanListHead;
   let lessThanListTail;
   let moreThanListHead;
@@ -6,25 +6,37 @@ module.exports = (linkedListHead, partition) => {
 
   let currentNode = linkedListHead;
   while (currentNode) {
-    if (currentNode < partition) {
+    if (currentNode.data < partition) {
       if (!lessThanListHead) {
-        lessThanListHead = lessThanListTail = currentNode;
+        lessThanListHead = currentNode;
+        lessThanListTail = currentNode;
       } else {
         lessThanListTail.next = currentNode;
+        lessThanListTail = currentNode;
       }
     } else {
-      if (!moreThanListHead) {
-        moreThanListHead = moreThanListTail = currentNode;
+      if (!moreThanListTail) {
+        moreThanListHead = currentNode;
+        moreThanListTail = currentNode;
       } else {
         moreThanListTail.next = currentNode;
+        moreThanListTail = currentNode;
       }
     }
+ 
     currentNode = currentNode.next;
   }
-
+  //need to set this to ensure the tail does not reference the old node
+  moreThanListTail.next = null;
+ 
   if (!lessThanListHead) {
     return moreThanListHead;
   }
   lessThanListTail.next = moreThanListHead;
   return lessThanListHead;
 }
+
+
+module.exports = {
+  partition
+};
