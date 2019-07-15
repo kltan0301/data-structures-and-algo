@@ -1,4 +1,4 @@
-const SinglyLinkedList = require('../singlyLinkedList.js');
+const { SinglyLinkedList } = require('../singlyLinkedList.js');
 
 function constructFilledSLL(length) {
   if (length === 0) { return 'Length must be > 0'; }

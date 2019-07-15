@@ -1,4 +1,4 @@
-const SinglyLinkedList = require('../singlyLinkedList.js');
+const { SinglyLinkedList } = require('../singlyLinkedList.js');
 
 let constructSll = (arr) => {
   let sl = new SinglyLinkedList();
