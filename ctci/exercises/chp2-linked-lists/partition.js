@@ -1,3 +1,4 @@
+// Solution 1
 function partition(linkedListHead, partition) {
   let lessThanListHead;
   let lessThanListTail;
@@ -36,7 +37,26 @@ function partition(linkedListHead, partition) {
   return lessThanListHead;
 }
 
+//Solution 2:
+function partition1(node, partition) {
+  let head = node;
+  let tail = node;
+  while (node !== null) {
+    let next = node.next;
+    if (node.data < partition) {
+      node.next = head;
+      head = node;
+    } else {
+      tail.next = node;
+      tail = node;
+    }
+    node = next;
+  }
+  tail.next = null;
+  return head;
+}
 
 module.exports = {
-  partition
+  partition,
+  partition1,
 };

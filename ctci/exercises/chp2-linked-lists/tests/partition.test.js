@@ -1,4 +1,4 @@
-const { partition } = require('../partition.js');
+const { partition, partition1 } = require('../partition.js');
 const { constructSll } = require('../../dataStructures/helpers/dataStructureConstructor');
 
 function printList(listHead) {
@@ -31,5 +31,28 @@ describe('partition', () => {
     let sortedHeadNode = partition(sl.head, 10);
     expect(sortedHeadNode.data).toEqual(8);
     expect(printList(sortedHeadNode)).toEqual('8,9,1,5,2,3,8,2,10');
+  });
+});
+
+describe('partition1', () => {
+  test('partitions correctly when partition is in list', () => {
+    let sl = constructSll([8,9,1,5,2,3,8,10,2]);
+    let sortedHeadNode = partition1(sl.head, 5);
+    expect(sortedHeadNode.data).toEqual(2);
+    expect(printList(sortedHeadNode)).toEqual('2,3,2,1,8,9,5,8,10');
+  });
+
+  test('partitions correctly when partition is not in list', () => {
+    let sl = constructSll([8, 9, 1, 5, 2, 3, 8, 10, 2]);
+    let sortedHeadNode = partition1(sl.head, 7);
+    expect(sortedHeadNode.data).toEqual(2);
+    expect(printList(sortedHeadNode)).toEqual('2,3,2,5,1,8,9,8,10');
+  });
+
+  test('partitions correctly when partition is not in list', () => {
+    let sl = constructSll([8, 9, 1, 5, 2, 3, 8, 10, 2]);
+    let sortedHeadNode = partition1(sl.head, 10);
+    expect(sortedHeadNode.data).toEqual(2);
+    expect(printList(sortedHeadNode)).toEqual('2,8,3,2,5,1,9,8,10');
   });
 });
