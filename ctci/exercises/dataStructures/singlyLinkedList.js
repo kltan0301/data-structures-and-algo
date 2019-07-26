@@ -64,6 +64,10 @@ class SinglyLinkedList {
     }
     return listArray;
   }
+
+  isEmpty() {
+    return this.head === null && this.tail === null;
+  }
 }
 
 module.exports = {
