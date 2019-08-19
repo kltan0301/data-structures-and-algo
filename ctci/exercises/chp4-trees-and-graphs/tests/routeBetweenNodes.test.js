@@ -1,6 +1,9 @@
 const search = require('../routeBetweenNodes.js');
 const { Node, Graph } = require('../../dataStructures/graph.js');
 
+// Given a directed graph, design an algorithm to find out
+// whether there is a route between two nodes.
+
 describe('routeBetweenNodes', () => {
   let graph;
   let nodeArr = [];
@@ -36,7 +39,7 @@ describe('routeBetweenNodes', () => {
     expect(search(graph, startNode, endNode)).toEqual(true);
   });
 
-  test('returns true if there is no path between 2 nodes', () => {
+  test('returns false if there is no path between 2 nodes', () => {
     let startNode = nodeArr[3];
     let endNode = nodeArr[7];
     expect(search(graph, startNode, endNode)).toEqual(false);
