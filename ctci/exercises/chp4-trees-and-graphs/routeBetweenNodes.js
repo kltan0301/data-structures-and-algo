@@ -15,7 +15,6 @@ module.exports = (graph, startNode, endNode) => {
   queue.enqueue(startNode);
   while (!queue.isEmpty()) {
     let node = queue.dequeue();
-    debugger
     for(let i = 0; i < node.adjacent.length; i++) {
       let adjacentNode = node.adjacent[i];
       if (adjacentNode === endNode) {
